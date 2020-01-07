@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdkj.dao.ResumeMapper">
+  <resultMap id="BaseResultMap" type="com.xdkj.bean.Resume">
+    <!--@mbg.generated-->
+    <!--@Table resume-->
+    <id column="resume_id" jdbcType="INTEGER" property="resume_id" />
+    <result column="resume_workstatus" jdbcType="VARCHAR" property="resume_workstatus" />
+    <result column="resume_workdirection" jdbcType="VARCHAR" property="resume_workdirection" />
+    <result column="resume_specificwork" jdbcType="VARCHAR" property="resume_specificwork" />
+    <result column="resume_skill" jdbcType="INTEGER" property="resume_skill" />
+    <result column="resume_works" jdbcType="INTEGER" property="resume_works" />
+    <result column="resume_introduce" jdbcType="VARCHAR" property="resume_introduce" />
+    <result column="resume_person" jdbcType="INTEGER" property="resume_person" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    resume_id, resume_workstatus, resume_workdirection, resume_specificwork, resume_skill, 
+    resume_works, resume_introduce, resume_person
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where resume_id = #{resume_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from resume
+    where resume_id = #{resume_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="resume_id" keyProperty="resume_id" parameterType="com.xdkj.bean.Resume" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into resume (resume_workstatus, resume_workdirection, 
+      resume_specificwork, resume_skill, resume_works, 
+      resume_introduce, resume_person)
+    values (#{resume_workstatus,jdbcType=VARCHAR}, #{resume_workdirection,jdbcType=VARCHAR}, 
+      #{resume_specificwork,jdbcType=VARCHAR}, #{resume_skill,jdbcType=INTEGER}, #{resume_works,jdbcType=INTEGER}, 
+      #{resume_introduce,jdbcType=VARCHAR}, #{resume_person,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="resume_id" keyProperty="resume_id" parameterType="com.xdkj.bean.Resume" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resume_workstatus != null">
+        resume_workstatus,
+      </if>
+      <if test="resume_workdirection != null">
+        resume_workdirection,
+      </if>
+      <if test="resume_specificwork != null">
+        resume_specificwork,
+      </if>
+      <if test="resume_skill != null">
+        resume_skill,
+      </if>
+      <if test="resume_works != null">
+        resume_works,
+      </if>
+      <if test="resume_introduce != null">
+        resume_introduce,
+      </if>
+      <if test="resume_person != null">
+        resume_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resume_workstatus != null">
+        #{resume_workstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_workdirection != null">
+        #{resume_workdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_specificwork != null">
+        #{resume_specificwork,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_skill != null">
+        #{resume_skill,jdbcType=INTEGER},
+      </if>
+      <if test="resume_works != null">
+        #{resume_works,jdbcType=INTEGER},
+      </if>
+      <if test="resume_introduce != null">
+        #{resume_introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_person != null">
+        #{resume_person,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xdkj.bean.Resume">
+    <!--@mbg.generated-->
+    update resume
+    <set>
+      <if test="resume_workstatus != null">
+        resume_workstatus = #{resume_workstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_workdirection != null">
+        resume_workdirection = #{resume_workdirection,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_specificwork != null">
+        resume_specificwork = #{resume_specificwork,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_skill != null">
+        resume_skill = #{resume_skill,jdbcType=INTEGER},
+      </if>
+      <if test="resume_works != null">
+        resume_works = #{resume_works,jdbcType=INTEGER},
+      </if>
+      <if test="resume_introduce != null">
+        resume_introduce = #{resume_introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="resume_person != null">
+        resume_person = #{resume_person,jdbcType=INTEGER},
+      </if>
+    </set>
+    where resume_id = #{resume_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xdkj.bean.Resume">
+    <!--@mbg.generated-->
+    update resume
+    set resume_workstatus = #{resume_workstatus,jdbcType=VARCHAR},
+      resume_workdirection = #{resume_workdirection,jdbcType=VARCHAR},
+      resume_specificwork = #{resume_specificwork,jdbcType=VARCHAR},
+      resume_skill = #{resume_skill,jdbcType=INTEGER},
+      resume_works = #{resume_works,jdbcType=INTEGER},
+      resume_introduce = #{resume_introduce,jdbcType=VARCHAR},
+      resume_person = #{resume_person,jdbcType=INTEGER}
+    where resume_id = #{resume_id,jdbcType=INTEGER}
+  </update>
+</mapper>

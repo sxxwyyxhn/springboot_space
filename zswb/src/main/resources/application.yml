@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_02?characterEncoding=utf-8
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+        initial-size: 5
+        min-idle: 5
+        max-active: 20
+        max-wait: 60000 # 毫秒
+        time-between-eviction-runs-millis: 60000 # 间隔检测时间，检测需要关闭的空闲连接
+        min-evictable-idle-time-millis: 30000 # 指定一个空闲连接最少空闲多久可被清除
+        validation-query: select 1 # 验证数据库连接的有效性
+        test-while-idle: true # 空闲时测试
+        test-on-borrow: false
+        test-on-return: false
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        use-global-data-source-stat: true
+        web-stat-filter:
+          enabled: true # 是否启用stateFilter默认为ttrue
+          url-pattern: /*
+          exclusions: /druid*/,*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico
+          session-stat-max-count: 10
+          session-stat-enable: true
+
+        # stateViewServlet配置，说明请参考druid wiki
+        stat-view-servlet:
+          enabled: true
+          url-pattern: /druid/*
+          reset-enable: true
+          login-username: admin
+          login-password: admin
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml

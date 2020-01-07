@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdkj.dao.IdentificationMapper">
+  <resultMap id="BaseResultMap" type="com.xdkj.bean.Identification">
+    <!--@mbg.generated-->
+    <!--@Table identification-->
+    <id column="identity_id" jdbcType="INTEGER" property="identity_id" />
+    <result column="identity_card" jdbcType="VARCHAR" property="identity_card" />
+    <result column="identity_image" jdbcType="VARCHAR" property="identity_image" />
+    <result column="identity_status" jdbcType="INTEGER" property="identity_status" />
+    <result column="identity_person" jdbcType="INTEGER" property="identity_person" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    identity_id, identity_card, identity_image, identity_status, identity_person
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from identification
+    where identity_id = #{identity_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from identification
+    where identity_id = #{identity_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="identity_id" keyProperty="identity_id" parameterType="com.xdkj.bean.Identification" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into identification (identity_card, identity_image, identity_status, 
+      identity_person)
+    values (#{identity_card,jdbcType=VARCHAR}, #{identity_image,jdbcType=VARCHAR}, #{identity_status,jdbcType=INTEGER}, 
+      #{identity_person,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="identity_id" keyProperty="identity_id" parameterType="com.xdkj.bean.Identification" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into identification
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="identity_card != null">
+        identity_card,
+      </if>
+      <if test="identity_image != null">
+        identity_image,
+      </if>
+      <if test="identity_status != null">
+        identity_status,
+      </if>
+      <if test="identity_person != null">
+        identity_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="identity_card != null">
+        #{identity_card,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_image != null">
+        #{identity_image,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_status != null">
+        #{identity_status,jdbcType=INTEGER},
+      </if>
+      <if test="identity_person != null">
+        #{identity_person,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xdkj.bean.Identification">
+    <!--@mbg.generated-->
+    update identification
+    <set>
+      <if test="identity_card != null">
+        identity_card = #{identity_card,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_image != null">
+        identity_image = #{identity_image,jdbcType=VARCHAR},
+      </if>
+      <if test="identity_status != null">
+        identity_status = #{identity_status,jdbcType=INTEGER},
+      </if>
+      <if test="identity_person != null">
+        identity_person = #{identity_person,jdbcType=INTEGER},
+      </if>
+    </set>
+    where identity_id = #{identity_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xdkj.bean.Identification">
+    <!--@mbg.generated-->
+    update identification
+    set identity_card = #{identity_card,jdbcType=VARCHAR},
+      identity_image = #{identity_image,jdbcType=VARCHAR},
+      identity_status = #{identity_status,jdbcType=INTEGER},
+      identity_person = #{identity_person,jdbcType=INTEGER}
+    where identity_id = #{identity_id,jdbcType=INTEGER}
+  </update>
+</mapper>
